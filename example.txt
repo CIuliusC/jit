@@ -1,0 +1,16 @@
+extern "C" __global__ void kernel1(float *d_a, float *d_b, float *d_c, const int N) {
+
+	const int tid = threadIdx.x + blockIdx.x * blockDim.x;
+
+	if (tid < N) d_c[tid] = d_a[tid] + d_b[tid];
+
+};
+
+extern "C" __global__ void kernel2(float *d_a, float *d_b, float *d_c, const int N) {
+
+	const int tid = threadIdx.x + blockIdx.x * blockDim.x;
+
+	if (tid < N) d_c[tid] = 2.f * d_a[tid] + 2.f * d_b[tid];
+
+};
+
